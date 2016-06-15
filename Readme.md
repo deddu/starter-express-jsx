@@ -1,70 +1,18 @@
-# Compass check-in reprise
+# Starter express jsx
 
-> Serves a series of checkin forms from the `forms` folder, and emails the results to the recipients.
+>Simple starter with server side jsx rendering.
+forked and modified from yeoman-express generator
 
-compass-checkin-node it's a reasonably simple node app that its supposed to replace the current checkins.
-It serves a rendered version for each JSON in the ‘forms’ folder. When the form get POSTed, it sends an email to the recipients defined in the same json.
+## usage:
 
-
-`forms` defines checkin forms, and the email recipients.
-`name` is a required field for every form element, and should be unique.
-
-## example:
-
-if we create the file `forms/pirate.json` the app will serve it at `/pirate` ;
-
-```json
-{
-  "title": "Pirate Check in",
-  "name":"hello_pirates",
-  "recipients": [
-    {
-      "name":"guybrush",
-      "email":"guybrush.threepwood@mi.com"
-    }
-  ],
-  "fields": [
-    {
-      "name": "id",
-      "type": "text",
-      "label": "Pirate Identifier",
-      "required": true
-    },
-    {
-      "name":"spacer1",
-      "type": "hr"
-    },
-    {
-      "type": "paragraph",
-      "text": "Please provide information about your pirate's behavior and mood:"
-    },
-    {
-      "name": "arr",
-      "type": "radio",
-      "label": "ARRR",
-      "required":false
-    }
-  ]
-}
-
+- run locally:
 ```
-
-### available form fields :
-
-- text : a simple text input
-- hr : an horiziontal line separator
-- paragraph : a text block, use this to add long descriptions
-- checkbox : a checkbox item
-- range : a range slider
-- textarea : a text area field
-- radio : a radio button (pair)
-
-## build:
+npm install
+gulp
 ```
- git clone git@github.com:turinggroup/compass-checkin-node.git
- cd compass-checkin-node
- npm install
+- use via docker:
 ```
-
-## develop:
-run `gulp serve`. The server will auto reload when changing any file. Keep in mind that editing the views (JSX) will require a browser refresh to see the changes.
+docker build -t my-express-app .
+docker run -it -p 12345:3000 --rm --name my-running-app my-express-app
+```
+will by default have your app running at 192.168.99.100:12345
